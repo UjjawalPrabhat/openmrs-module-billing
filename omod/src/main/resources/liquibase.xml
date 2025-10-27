@@ -946,13 +946,13 @@
 		</update>
 	</changeSet>
 
-	<changeSet id="20251024-1430-o3-5145-add-unique-constraints-billable-service" author="ujjawal-prabhat">
+	<changeSet id="O3-5145-add-unique-constraints-billable-service" author="ujjawal-prabhat">
 		<preConditions onFail="MARK_RAN">
 			<not>
 				<indexExists tableName="cashier_billable_service" indexName="unique_billable_service_name"/>
 			</not>
 		</preConditions>
-		<comment>Add unique constraints on billable service fields to enforce data integrity</comment>
+		<comment>Add unique constraints on the fields name, short_name and service_type in the billable_service table</comment>
 		<addUniqueConstraint 
 			constraintName="unique_billable_service_name"
 			tableName="cashier_billable_service"
