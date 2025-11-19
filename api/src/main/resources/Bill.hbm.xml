@@ -52,7 +52,7 @@
 		<property name="shortName" type="java.lang.String" column="short_name" length="255"/>
 		<many-to-one name="concept" class="org.openmrs.Concept" not-null="false" column="concept_id"/>
 
-		<many-to-one name="serviceType" class="org.openmrs.Concept" not-null="false" column="service_type" unique="true"/>
+		<many-to-one name="serviceType" class="org.openmrs.Concept" not-null="false" column="service_type"/>
 		<many-to-one name="serviceCategory" class="org.openmrs.Concept" not-null="false" column="service_category"/>
 
 		<bag name="servicePrices" lazy="false" inverse="true" cascade="all-delete-orphan">
