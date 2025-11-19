@@ -17,6 +17,7 @@ import org.openmrs.module.billing.api.BillLineItemService;
 import org.openmrs.module.billing.api.base.entity.impl.BaseEntityDataServiceImpl;
 import org.openmrs.module.billing.api.base.entity.security.IEntityAuthorizationPrivileges;
 import org.openmrs.module.billing.api.model.BillLineItem;
+import org.openmrs.validator.ValidateUtil;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
@@ -27,9 +28,18 @@ public class BillLineItemServiceImpl extends BaseEntityDataServiceImpl<BillLineI
 		return this;
 	}
 	
+	/**
+	 * Validates a BillLineItem object using the registered BillLineItemValidator. This method is called
+	 * before persisting a BillLineItem to the database.
+	 * 
+	 * @param billLineItem the BillLineItem to validate
+	 * @throws org.openmrs.api.ValidationException if validation fails
+	 */
 	@Override
-	protected void validate(BillLineItem object) {
-		
+	protected void validate(BillLineItem billLineItem) {
+		// Validate using OpenMRS validation framework
+		// This will invoke all registered validators for the BillLineItem class (BillLineItemValidator)
+		ValidateUtil.validate(billLineItem);
 	}
 	
 	@Override
